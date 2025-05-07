@@ -1,0 +1,27 @@
+tags:
+  - Colaborador
+description: Endpoint para acessar o login
+
+parameters:
+  - in: body
+    name: corpo
+    required: true
+    schema: 
+      type: object
+      properties:
+        email:
+          type: string
+          example: lestevescairo@email.com
+        senha:
+          type: string
+          example: senha123
+      required:
+        - email
+        - senha
+responses:
+  201:
+    description: Login acessado com sucesso
+  400:
+    description: Credenciais inválidas
+  404:
+    description: Usuário não encontrado

@@ -1,0 +1,10 @@
+tags:
+  - Colaborador
+description: Endpoint para mostrar a lista de todos os colaboradores ativos no banco de dados
+
+responses:
+  200:
+    description: Lista de colaboradores ativos retornada com sucesso
+  401:
+    description: Usuário não autorizado
+
