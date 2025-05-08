@@ -1,0 +1,9 @@
+tags:
+  - Reembolso
+description: Endpoint para mostrar a lista de todos os reembolsos ativos no banco de dados
+
+responses:
+  200:
+    description: Lista de reembolsos ativos retornada com sucesso
+  401:
+    description: Usuário não autorizado

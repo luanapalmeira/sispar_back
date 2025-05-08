@@ -7,4 +7,3 @@ responses:
     description: Lista de colaboradores ativos retornada com sucesso
   401:
     description: Usuário não autorizado
-

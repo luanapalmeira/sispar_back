@@ -1,27 +1,27 @@
 from  src.model import db
 from sqlalchemy.schema import Column, ForeignKey
 from sqlalchemy.types import Integer, String, DECIMAL, Date
-from sqlalchemy import func
+from datetime import date
 
-class Reembolso(db.model):  # <-- Interpreta que essa classe vai ser o modelo para a entidade
+class Reembolso(db.Model):  # <-- Interpreta que essa classe vai ser o modelo para a entidade
 #---------------------------------------ATRIBUTOS---------------------------------------
     id = Column(Integer, primary_key=True, autoincrement=True)
     colaborador = Column(String(100), nullable=False)
     empresa = Column(String(50), nullable=False)
     num_prestacao = Column(Integer, nullable=False)
     descricao = Column(String(255))
-    data = Column(Date, nullable=False, server_default=func.current_date())
-    tipo_reembolso = Column(String(35), mullable=False)
-    centro_custo = Column(String(50) nullable=False)
+    data = Column(Date, nullable=False, default=date.today)
+    tipo_reembolso = Column(String(35), nullable=False)
+    centro_custo = Column(String(50), nullable=False)
     ordem_interna = Column(String(50))
     divisao = Column(String(50))
     pep = Column(String(50))
-    moeda = Column(String(20) nullable=False)
-    distacia_km = Column(String(50))
+    moeda = Column(String(20), nullable=False)
+    distancia_km = Column(String(50))
     valor_km = Column(String(50))
     valor_faturado = Column(DECIMAL(10,2), nullable=False)  # <-- 999999999.22
     despesa = Column(DECIMAL(10,2))
-    id_colaborador = Column(ForeignKey(column="colaborador.id"))
+    id_colaborador = Column(Integer, ForeignKey(column="colaborador.id"))
     status = Column(String(20), nullable=False)
     
 #----------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ class Reembolso(db.model):  # <-- Interpreta que essa classe vai ser o modelo pa
         self.divisao = divisao
         self.pep = pep
         self.moeda = moeda
-        self.distacia_km = distancia_km
+        self.distancia_km = distancia_km
         self.valor_km = valor_km
         self.valor_faturado = valor_faturado
         self.despesa = despesa
@@ -61,5 +61,7 @@ class Reembolso(db.model):  # <-- Interpreta que essa classe vai ser o modelo pa
             'valor_km': self.valor_km,
             'valor_faturado': self.valor_faturado,
             'despesa': self.despesa,
+            'status': self.status,
+            'id_colaborador': self.id_colaborador,
             'status': self.status
         }

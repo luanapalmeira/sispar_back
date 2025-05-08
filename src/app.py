@@ -3,6 +3,7 @@
 
 from flask import Flask
 from src.controller.colaborador_controller import bp_colaborador
+from src.controller.reembolso_controller import bp_reembolso
 from src.model import db
 from config import Config
 from flask_cors import CORS
@@ -29,6 +30,8 @@ def create_app():
     CORS(app, origins="*") # <----- A política de CORS seja implementada em TODA A APLICAÇÃO | Não colocar o * em origins por questões de insegurança, má prática.
     
     app.register_blueprint(bp_colaborador)
+    
+    app.register_blueprint(bp_reembolso)
     
     app.config.from_object(Config)
     
