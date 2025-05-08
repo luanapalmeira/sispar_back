@@ -78,11 +78,12 @@ def atualizar_dados_colaborador(id_colaborador):
     return jsonify({'mensagem': 'Dados do colaborador atualizados com sucesso'}), 200
 
 @bp_colaborador.route('/deletar/<int:id_colaborador>', methods=['DELETE'])
+@swag_from('../docs/colaborador/deletar_colaborador.yml')
 def deletar_colaborador(id_colaborador):
     colaborador = db.session.get(Colaborador, id_colaborador)
 
     if not colaborador:
-        return jsonify({'erro': 'Colaborador não encontrado'}), 404
+        return jsonify({'mensagem': 'Colaborador não encontrado'}), 404
 
     #Soft delete: marca como deletado sem remover do banco
     colaborador.deletado = True
@@ -91,11 +92,12 @@ def deletar_colaborador(id_colaborador):
     return jsonify({'mensagem': 'Colaborador marcado como deletado com sucesso'}), 200
 
 @bp_colaborador.route('/restaurar/<int:id_colaborador>', methods=['PUT'])
+@swag_from('../docs/colaborador/restaurar_colaborador.yml')
 def restaurar_colaborador(id_colaborador):
     colaborador = db.session.get(Colaborador, id_colaborador)
 
     if not colaborador:
-        return jsonify({'erro': 'Colaborador não encontrado'}), 404
+        return jsonify({'mensagem': 'Colaborador não encontrado'}), 404
 
     if not colaborador.deletado:
         return jsonify({'mensagem': 'Colaborador já está ativo'}), 200

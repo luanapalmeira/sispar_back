@@ -1,0 +1,16 @@
+tags:
+  - Colaborador
+description: Endpoint para restaurar um colaborador que foi deletado do banco de dados
+
+parameters:
+  - name: id_colaborador
+    in: path
+    required: true
+    type: integer
+responses:
+  200:
+    description: Colaborador restaurado com sucesso
+  201:
+    description: Colaborador já está ativo
+  404:
+    description: Colaborador não encontrado

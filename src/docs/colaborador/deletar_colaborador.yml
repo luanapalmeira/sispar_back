@@ -1,0 +1,14 @@
+tags:
+  - Colaborador
+description: Endpoint para deletar um colaborador do banco de dados (soft delete)
+
+parameters:
+  - name: id_colaborador
+    in: path
+    required: true
+    type: integer
+responses:
+  200:
+    description: Colaborador marcado como deletado com sucesso
+  404:
+    description: Colaborador não encontrado

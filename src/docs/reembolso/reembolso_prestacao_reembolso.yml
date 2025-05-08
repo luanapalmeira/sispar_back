@@ -1,0 +1,14 @@
+tags:
+  - Reembolso
+description: Endpoint para buscar um reembolso por meio do número de prestação
+
+parameters:
+  - name: num_prestacao
+    in: path
+    required: true
+    type: integer
+responses:
+  200:
+    description: Reembolso encontrado com sucesso
+  404:
+    description: Reembolso não encontrado
